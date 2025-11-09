@@ -1,0 +1,160 @@
+EgoLlama Gateway - Non-Commercial Developer License
+====================================================
+
+Copyright (c) 2024 EgoLlama Contributors
+
+TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+1. DEFINITIONS
+
+   "License" shall mean the terms and conditions for use, reproduction,
+   and distribution as defined by this document.
+
+   "Licensor" shall mean the copyright owner or entity authorized by
+   the copyright owner that is granting the License.
+
+   "You" (or "Your") shall mean an individual or Legal Entity exercising
+   permissions granted by this License.
+
+   "Source Code" shall mean the preferred form for making modifications,
+   including but not limited to software source code, documentation
+   source, and configuration files.
+
+   "Commercial Use" shall mean any use of the Software that is intended
+   for or results in commercial advantage or private monetary compensation,
+   including but not limited to:
+   - Selling or licensing the Software
+   - Using the Software to provide services for which You charge a fee
+   - Using the Software in a commercial product or service
+   - Using the Software for profit-generating activities
+   - Using the Software by a for-profit company or organization
+   - Distributing the Software as part of a commercial offering
+
+2. GRANT OF LICENSE
+
+   Subject to the terms and conditions of this License, each Contributor
+   hereby grants to You a non-exclusive, worldwide, non-transferable,
+   non-sublicensable, royalty-free license to use, copy, modify, merge,
+   publish, and distribute the Software, subject to the following
+   restrictions:
+
+   a) NON-COMMERCIAL USE ONLY
+      You may use the Software only for non-commercial purposes.
+      Commercial use is strictly prohibited without explicit written
+      permission from the Licensor.
+
+   b) DEVELOPER USE
+      Individual developers and non-profit organizations may use,
+      modify, and distribute the Software freely for:
+      - Personal projects
+      - Educational purposes
+      - Non-profit research
+      - Open source projects (non-commercial)
+      - Development and testing
+
+   c) NO COMMERCIAL DISTRIBUTION
+      You may not sell, rent, lease, or otherwise commercially distribute
+      the Software or any derivative works.
+
+   d) NO PROFIT FROM USE
+      You may not use the Software to generate revenue, profit, or
+      commercial advantage without explicit written permission from
+      the Licensor.
+
+3. RESTRICTIONS
+
+   a) COMMERCIAL USE PROHIBITION
+      Companies, corporations, and for-profit entities are prohibited
+      from using the Software without obtaining explicit written
+      permission from the Licensor. This includes but is not limited to:
+      - Software companies
+      - SaaS providers
+      - Consulting firms
+      - Any entity that generates revenue from software or services
+
+   b) NO REVERSE ENGINEERING FOR COMMERCIAL PURPOSES
+      You may not reverse engineer, decompile, or disassemble the
+      Software for commercial purposes.
+
+   c) MODIFICATIONS
+      If you modify the Software, you must:
+      - Retain all copyright notices
+      - Include this license in all copies
+      - Clearly mark your modifications
+      - Not remove or alter any copyright notices
+
+4. ATTRIBUTION
+
+   You must retain all copyright notices and this license in all copies
+   of the Software or substantial portions of the Software. You must
+   include the following in all distributions:
+
+   "This software is licensed under the EgoLlama Non-Commercial
+   Developer License. Commercial use is prohibited without explicit
+   permission."
+
+5. COMMERCIAL USE PERMISSION
+
+   To obtain permission for commercial use, you must:
+   a) Contact the Licensor in writing
+   b) Provide details of your intended commercial use
+   c) Obtain explicit written permission before any commercial use
+   d) Comply with any additional terms specified in the permission
+
+   Contact for commercial licensing inquiries:
+   [Add your contact information here]
+
+6. NO WARRANTY
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+7. TERMINATION
+
+   This License and the rights granted hereunder will terminate
+   automatically if You fail to comply with any term of this License.
+   Upon termination, you must destroy all copies of the Software.
+
+8. ENFORCEMENT
+
+   Violation of this license may result in legal action. The Licensor
+   reserves the right to enforce these terms and to seek damages for
+   unauthorized commercial use.
+
+9. GOVERNING LAW
+
+   This License shall be governed by the laws of [Your Jurisdiction],
+   without regard to its conflict of law provisions.
+
+================================================================================
+
+SUMMARY FOR DEVELOPERS:
+
+✅ YOU CAN:
+   - Use the Software for personal projects
+   - Modify and distribute for non-commercial purposes
+   - Use in open source projects (non-commercial)
+   - Use for educational and research purposes
+   - Share with other developers
+
+❌ YOU CANNOT:
+   - Use the Software for commercial purposes
+   - Sell or profit from the Software
+   - Use in a for-profit company without permission
+   - Remove copyright notices
+   - Use commercially without explicit written permission
+
+📧 FOR COMMERCIAL USE:
+   Contact the Licensor for commercial licensing options.
+
+================================================================================
+
+This license is NOT an Open Source license as defined by the Open Source
+Initiative, as it restricts commercial use. It is designed to protect
+the Software from unauthorized commercial exploitation while allowing
+free use by developers and non-profit organizations.

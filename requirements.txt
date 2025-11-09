@@ -1,0 +1,22 @@
+# EgoLlama Gateway Requirements
+
+# FastAPI and web framework
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.0.0
+
+# Database
+sqlalchemy>=2.0.0
+asyncpg>=0.28.0
+psycopg2-binary>=2.9.0
+
+# Redis
+redis>=5.0.0
+hiredis>=2.2.0
+
+# System utilities
+psutil>=5.9.0
+
+# Optional: GPU support
+# torch>=2.0.0
+# transformers>=4.30.0

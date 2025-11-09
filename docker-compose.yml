@@ -1,0 +1,105 @@
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: egollama-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-ego}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - egollama-network
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: egollama-redis
+    command: redis-server --appendonly yes
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - egollama-network
+
+  # LLaMA Gateway
+  gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: egollama-gateway
+    environment:
+      # Database
+      EGOLLAMA_DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-ego}?sslmode=disable
+      DB_HOST: postgres
+      DB_NAME: ${POSTGRES_DB:-ego}
+      DB_USER: ${POSTGRES_USER:-postgres}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      DB_PORT: 5432
+      
+      # Redis
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_DB: 0
+      
+      # Gateway
+      GATEWAY_HOST: 0.0.0.0
+      GATEWAY_PORT: 8082
+      GATEWAY_WORKERS: ${GATEWAY_WORKERS:-4}
+      GATEWAY_RELOAD: ${GATEWAY_RELOAD:-false}
+      
+      # Logging
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      
+      # Features
+      ENABLE_POSTGRESQL: ${ENABLE_POSTGRESQL:-true}
+      ENABLE_REDIS: ${ENABLE_REDIS:-true}
+      ENABLE_GRACEFUL_DEGRADATION: ${ENABLE_GRACEFUL_DEGRADATION:-true}
+    ports:
+      - "${GATEWAY_PORT:-8082}:8082"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./logs:/app/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8082/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - egollama-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  egollama-network:
+    driver: bridge
+
+
+
+
+
+
+
+
