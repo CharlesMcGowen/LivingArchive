@@ -89,4 +89,28 @@ Thumbs.db
 # Trash
 @trash/
 
+# Development records and summaries (not needed in repo)
+GITHUB_READY.md
+CLI_IMPROVEMENTS_SUMMARY.md
+CLI_MODEL_MANAGEMENT_ASSESSMENT.md
+DEPLOYMENT_TEST_RESULTS.md
+SECURITY_SCAN_SUMMARY.md
+IMPLEMENTATION_STATUS.txt
+UPGRADE_SUMMARY.txt
+docker_analysis_results.json
+
+# Ignore all markdown files (WARNING: This will ignore README.md, SETUP_GUIDE.md, etc.)
+# Uncomment the line below to ignore ALL .md files:
+# *.md
+# !LICENSE
+# !README.md
+# !SETUP_GUIDE.md
+# !DEPLOYMENT_GUIDE.md
+
+# Development markdown patterns (alternative - ignore specific patterns)
+# *_SUMMARY.md
+# *_ASSESSMENT.md
+# *_TEST_RESULTS.md
+# *_STATUS.*
+
 
