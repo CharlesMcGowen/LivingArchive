@@ -107,10 +107,17 @@ docker_analysis_results.json
 # !SETUP_GUIDE.md
 # !DEPLOYMENT_GUIDE.md
 
-# Development markdown patterns (alternative - ignore specific patterns)
-# *_SUMMARY.md
-# *_ASSESSMENT.md
-# *_TEST_RESULTS.md
-# *_STATUS.*
+# Security and test documentation (ignore these patterns)
+SECURITY_*.md
+*_TEST_REPORT.md
+*_TEST_RESULTS.md
+*_DEPLOYMENT_SUMMARY.md
+*_FIXES_APPLIED.md
+DEPLOYMENT_TEST_REPORT.md
+
+# Development markdown patterns (ignore specific patterns)
+*_SUMMARY.md
+*_ASSESSMENT.md
+*_STATUS.*
 
 
