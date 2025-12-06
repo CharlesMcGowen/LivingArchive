@@ -222,7 +222,10 @@ Licensed Work is subject to the Business Source License 1.1, reproduced below,
 with the following Additional Use Grant:
 
 > You may use this Software under the Apache License, Version 2.0 for
-> non-commercial, community, academic, or internal evaluation purposes.
+> non-commercial, community, academic, or internal evaluation purposes, **not to
+> exceed a period of ninety (90) days**. For production use or evaluation
+> exceeding this limit, a commercial agreement is required.
+>
 > For production or commercial deployment (including offering the Software as a
 > hosted service), you must obtain a commercial agreement from the Licensor or
 > wait until the Change Date, after which the Software will automatically become
@@ -245,7 +248,13 @@ Licensed Work under the terms of the Change License, and the rights granted by
 this License terminate.
 
 You must not use the Licensed Work for production purposes, except as expressly
-permitted by the Additional Use Grant, if any.
+permitted by the Additional Use Grant (as revised above).
+
+**Commercial Use Definition:** Commercial Use is defined as any deployment of the
+Software to test or train the employees, contractors, or customers of any
+organization, or any use by an entity that is charging a fee for services enabled
+by the Software. Specific examples are detailed in the accompanying
+`COMMERCIAL_LICENSING.md` file.
 
 You must not alter or remove any licensing notices in the Licensed Work.
 
@@ -287,6 +296,13 @@ Dual Licensing Guidance
   Business Source License 1.1 terms above.
 - Upon the Change Date, the entire codebase will be available under the Apache
   License, Version 2.0 for all purposes, including commercial.
+
+**Contributor License Agreement (CLA) Requirement:** Contributions to this
+project are welcome, but contributors must agree to the terms of the Contributor
+License Agreement (CLA) prior to having their code merged. The CLA grants
+EgoLlama the necessary rights to use and re-license the contribution under both
+the Apache 2.0 and BSL 1.1 (Commercial) terms. **This is required to maintain
+the dual-licensing model.** See `CONTRIBUTOR_LICENSE_AGREEMENT.md` for details.
 
 For questions about licensing or to negotiate commercial terms, please refer to
 `COMMERCIAL_LICENSING.md` or contact licensing@egollama.ai.
