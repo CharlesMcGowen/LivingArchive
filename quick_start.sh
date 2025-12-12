@@ -44,6 +44,15 @@ command_exists() {
 
 # Detect deployment mode
 detect_mode() {
+    # Check for docker compose v2 first (preferred)
+    if command_exists docker && docker compose version >/dev/null 2>&1; then
+        if docker ps >/dev/null 2>&1; then
+            echo "docker"
+            return 0
+        fi
+    fi
+    
+    # Fallback to docker-compose v1
     if command_exists docker && command_exists docker-compose; then
         if docker ps >/dev/null 2>&1; then
             echo "docker"
@@ -71,10 +80,21 @@ deploy_docker() {
         exit 1
     fi
     
-    if ! command_exists docker-compose; then
+    # Check for docker compose v2 or docker-compose v1
+    if ! docker compose version >/dev/null 2>&1 && ! command_exists docker-compose; then
         error "Docker Compose is not installed"
         echo "  Install: https://docs.docker.com/compose/install/"
         exit 1
+    fi
+    
+    # Determine which compose command to use (use v2 if available, fallback to v1)
+    local COMPOSE_CMD
+    if docker compose version >/dev/null 2>&1; then
+        COMPOSE_CMD="docker compose"
+        info "Using Docker Compose v2"
+    else
+        COMPOSE_CMD="docker-compose"
+        info "Using Docker Compose v1"
     fi
     
     # Setup environment
@@ -103,7 +123,7 @@ EOF
     
     # Start services
     info "Starting Docker services..."
-    docker-compose up -d
+    $COMPOSE_CMD up -d
     
     success "Services started!"
     info "Waiting for services to be healthy..."
@@ -114,11 +134,11 @@ EOF
     
     # PostgreSQL
     while [ $attempt -lt $max_attempts ]; do
-        if docker-compose exec -T postgres pg_isready -U postgres >/dev/null 2>&1; then
+        if $COMPOSE_CMD exec -T postgres pg_isready -U postgres >/dev/null 2>&1; then
             success "PostgreSQL is ready"
             # Run database migrations
             info "Running database migrations..."
-            if docker-compose exec -T gateway alembic upgrade head >/dev/null 2>&1; then
+            if $COMPOSE_CMD exec -T gateway alembic upgrade head >/dev/null 2>&1; then
                 success "Database migrations completed"
             else
                 warning "Migration failed (may already be up to date)"
@@ -132,7 +152,7 @@ EOF
     # Redis
     attempt=0
     while [ $attempt -lt $max_attempts ]; do
-        if docker-compose exec -T redis redis-cli ping >/dev/null 2>&1; then
+        if $COMPOSE_CMD exec -T redis redis-cli ping >/dev/null 2>&1; then
             success "Redis is ready"
             break
         fi
@@ -153,7 +173,7 @@ EOF
     
     if [ $attempt -eq $max_attempts ]; then
         warning "Gateway took longer than expected"
-        info "Check logs: docker-compose logs gateway"
+        info "Check logs: $COMPOSE_CMD logs gateway"
     fi
 }
 
@@ -228,17 +248,24 @@ show_status() {
     local mode=$(detect_mode)
     
     if [ "$mode" = "docker" ]; then
+        # Determine compose command
+        if docker compose version >/dev/null 2>&1; then
+            COMPOSE_CMD="docker compose"
+        else
+            COMPOSE_CMD="docker-compose"
+        fi
+        
         echo "Services:"
-        docker-compose ps
+        $COMPOSE_CMD ps
         echo ""
         echo "Gateway URL: http://localhost:8082"
         echo "Health Check: http://localhost:8082/health"
         echo ""
         echo "Useful commands:"
-        echo "  View logs:    docker-compose logs -f gateway"
-        echo "  Stop:         docker-compose down"
-        echo "  Restart:     docker-compose restart"
-        echo "  Status:       docker-compose ps"
+        echo "  View logs:    $COMPOSE_CMD logs -f gateway"
+        echo "  Stop:         $COMPOSE_CMD down"
+        echo "  Restart:      $COMPOSE_CMD restart"
+        echo "  Status:       $COMPOSE_CMD ps"
     else
         echo "Gateway URL: http://localhost:8082"
         echo "Health Check: http://localhost:8082/health"
